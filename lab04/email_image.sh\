@@ -1,0 +1,22 @@
+#!/bin/sh
+
+[ "$#" = "0" ] && exit 1
+for file in $@
+do
+	echo "Address to e-mail this image to?"
+	while read address
+	do
+		addr="$address" ; break
+	done
+	echo "Message to accompany image?"
+	while read message
+	do
+		mess="$message" ; break
+	done
+	base=$(basename $file)
+	name=${base%.*}
+	if `echo "$mess" |mutt -s "$name" -e 'set copy=no' -a $file -- "$addr"`
+	then
+		echo "$file sent to $addr"
+	fi
+done

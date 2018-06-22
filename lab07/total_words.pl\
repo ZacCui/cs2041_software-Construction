@@ -1,0 +1,17 @@
+#!/usr/bin/perl -w
+use strict;
+
+sub total(){
+	my $num = 0;
+	while(my $line = <STDIN>){
+		chomp $line;
+		my @b = ();
+		$line =~ s/\'/ /g;
+		print $line;
+	}
+	return $num;
+
+}
+
+my $num = total();
+print "$num\n";

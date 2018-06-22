@@ -1,0 +1,10 @@
+#!/bin/sh
+key=`echo $1 | cut -c1`
+wget -q -O- "http://www.handbook.unsw.edu.au/vbook2017/brCoursesByAtoZ.jsp?StudyLevel=Postgraduate&descr=$key" "http://www.handbook.unsw.edu.au/vbook2017/brCoursesByAtoZ.jsp?StudyLevel=Undergraduate&descr=$key" | grep "$1" |
+cat -A |
+sed -E 's/(\^I)*//g' |
+sed -E 's/<[^<>]*>+//g' |
+sed -E c's/\$//g'|
+sed 'N;s/\n/ /' |
+sort |
+uniq
