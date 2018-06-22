@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block body_contents %}
+
+<div class="unswtalk_heading">
+UNSWtalk page
+</div>
+
+{%if image_filename %}
+<img src="{{url_for('static', filename=image_filename)}}" height="300" width="300">
+{% else %}
+<img src="{{url_for('static', filename='Unknown.png')}}" height="300" width="300">
+{% endif %}
+
+
+<form method="POST" action="{{url_for('profile', zid='None')}}">
+    <input type="hidden" name="n" value="7">
+    <input type="submit" value="Next student" class="unswtalk_button">
+</form>
+
+<h1>My Info</h1>
+
+<div class="unswtalk_user_details">
+<b><h4>{{student_details}}<h4></b>
+</div>    
+
+<h1>My Friends</h1>
+<div class="row" >
+	{% for zid in friend_list %}
+			<a href="{{url_for('profile', zid=zid)}}"><img src="{{url_for('static', filename=friend_list[zid]['img'])}}" height="60" width="60"></a>
+			<a href="{{url_for('profile', zid=zid)}}">{{friend_list[zid]['name']}}</a>
+	{% endfor %}
+</div>    
+
+<h1>My Posts</h1>
+
+{%if comment %}
+	{% for x in comment %}
+	<div class="unswtalk_user_details">
+	{% for zid in comment[x]['info']%}
+	<h4>Post by <a href="{{url_for('profile', zid=zid)}}"><img src="{{url_for('static', filename=comment[x]['info'][zid]['img'])}}" height="50" width="50">{{comment[x]['info'][zid]['name']}}({{zid}})</a>
+	</h4>
+	{% endfor %}
+	<p>{{comment[x]['post']}}</p>
+		<div class=text-center><form method="POST" action="{{url_for('comment')}}">
+    			<input type="hidden" name="x" value="{{comment[x]['x']}}">
+    			<input type="hidden" name="zid" value="{{student_to_show}}">
+    			<input name="comment" style="width: 300px;">
+    			<input class="row" type="submit" value="Comment">
+		</form></div>
+	{% for y in comment[x]['comment']%}
+		<div class="unswtalk_user_details">
+			{% for zid in y['info']%}
+			<h5>Comment by <a href="{{url_for('profile', zid=zid)}}"><img src="{{url_for('static', filename=y['info'][zid]['img'])}}" height="50" width="50">{{y['info'][zid]['name']}}({{zid}})</a>
+			</h5>
+			{% endfor %}
+			<p>{{y['msg']}}</p>
+			<div class=text-center><form method="POST" action="{{url_for('reply')}}">
+    					<input type="hidden" name="x" value="{{comment[x]['x']}}">
+    					<input type="hidden" name="y" value="{{y['y']}}">
+    					<input type="hidden" name="zid" value="{{student_to_show}}">
+    					<input name="reply" style="width: 300px;">
+    					<input class="row" type="submit" value="Reply">
+			</form></div>
+				{% for reply in y['reply'] %}
+				<div class="unswtalk_user_details">
+					{% for zid in reply['info']%}
+					<h5>Reply by <a href="{{url_for('profile', zid=zid)}}"><img src="{{url_for('static', filename=reply['info'][zid]['img'])}}" height="50" width="50">{{reply['info'][zid]['name']}}({{zid}})</a>
+					</h5>
+					{% endfor %}
+					<p>{{reply['msg']}}</p>
+				</div>
+				{% endfor %}
+		</div>
+	{% endfor %}
+	</div>    
+	{% endfor %}
+{% else %}
+	<div class="unswtalk_user_details">
+	<h2>No Posts</h2>
+	</div>    
+{% endif %}
+
+
+{% endblock %}

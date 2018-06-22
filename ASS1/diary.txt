@@ -1,0 +1,15 @@
+13/09/17	20:00	20:15		read through the ass1 spec
+13/09/17	20:15	20:30		planning complete the ass1 in first 3 days of the mid break
+28/09/17	10:00   11:00		reading the examples and considering how to solve it
+29/09/17	16:00 	16:00 		clone the temp ass1 from git lab
+29/09/17	19:00 	20:00		subset1 completed
+29/09/17	23:00 	24:00		mutiple lines print completed
+30/09/17	3:00 	4:00		subset2 completed
+01/10/17	3:00	3:15 		auto test completed
+01/10/17	4:00	6:00 		bugs fixed and extra tests added
+01/10/17	6:00	8:00 		for loop and range completed, auto_test improved
+02/10/17	6:00	8:00		subset3 completed
+02/10/17	21:00	22:00		subset 4 largely finished
+04/10/17	00:00	1:00		subset4 completed
+04/10/17	01:00	2:00		subset5 args handled and bugs fixed 
+

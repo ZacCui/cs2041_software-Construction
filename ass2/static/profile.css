@@ -1,0 +1,46 @@
+#icon-wrapper {
+    padding: 20px 30px;
+}
+
+#social  {
+    display: inline-block;
+    height:42px;
+    z-index:2;
+}
+
+#social div {
+    display: inline-block;
+    margin: 0;
+}
+
+.facebook {
+    background: blue;
+    height:42px;
+    width:42px;
+    background-size:42px;
+}
+.facebook:hover {
+    background: red;
+}
+
+.twitter {
+    background: pink;
+    height:42px;
+    width:42px;
+    background-size:42px;
+}
+
+.twitter:hover {
+    background: red;
+}
+
+#logo, #bar, #middle {
+    width: 42px;
+    height: 42px;
+    background: gray;
+    display: inline-block;
+}
+
+#logo:hover, #bar:hover, #middle:hover {
+    background: red;    
+}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body_contents %}
+
+{{ error }}
+<p>
+<form method="POST" action="{{url_for('post')}}">
+<h3>Enter Your Post:</h3>
+<input name="post" style="width: 300px; height:200px;" >
+<p>
+<input type="submit" value=Post>
+</form>
+{% endblock %}
